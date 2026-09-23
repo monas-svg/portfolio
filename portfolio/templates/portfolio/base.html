@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ profile.full_name|default:"Portfolio DevOps" }} — {{ profile.headline|default:"Ingénieur DevOps & Multi-Cloud" }}{% endblock %}</title>
+  <meta name="description" content="{{ profile.summary|default:''|truncatechars:160 }}">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__row">
+      <a class="brand" href="#top">
+        <span class="brand__mark" aria-hidden="true">▣</span>
+        <span class="brand__text">{{ profile.full_name|default:"Portfolio" }}</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="#about">Profil</a>
+        <a href="#skills">Compétences</a>
+        <a href="#experience">Expérience</a>
+        <a href="#projects">Projets</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact" class="site-nav__cta">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
+      <a href="#about">Profil</a>
+      <a href="#skills">Compétences</a>
+      <a href="#experience">Expérience</a>
+      <a href="#projects">Projets</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap site-footer__grid">
+      <div>
+        <p class="site-footer__title">Discutons de votre prochaine infrastructure.</p>
+        <p class="site-footer__text">Disponible pour des missions freelance ou un poste DevOps / Cloud en présentiel ou à distance.</p>
+      </div>
+      <div class="site-footer__contacts">
+        {% if profile.email %}<a href="mailto:{{ profile.email }}">{{ profile.email }}</a>{% endif %}
+        {% if profile.phone %}<a href="tel:{{ profile.phone|cut:' ' }}">{{ profile.phone }}</a>{% endif %}
+        {% if profile.github_url %}<a href="{{ profile.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+        {% if profile.linkedin_url %}<a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+      </div>
+    </div>
+    <div class="wrap site-footer__bottom">
+      <span>&copy; {% now "Y" %} {{ profile.full_name|default:"" }}</span>
+      <span>{{ profile.location }}</span>
+    </div>
+  </footer>
+
+  <script src="{% static 'portfolio/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "family": "portfolio-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/portfolioTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/portfolioTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "portfolio-web",
+      "image": "<REPLACED_BY_CI>",
+      "essential": true,
+      "portMappings": [{ "containerPort": 8000, "protocol": "tcp" }],
+      "environment": [
+        { "name": "DJANGO_ALLOWED_HOSTS", "value": "votredomaine.com" },
+        { "name": "DJANGO_DEBUG", "value": "False" }
+      ],
+      "secrets": [
+        { "name": "DJANGO_SECRET_KEY", "valueFrom": "arn:aws:secretsmanager:eu-west-3:<ACCOUNT_ID>:secret:portfolio/django-secret-key" },
+        { "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:eu-west-3:<ACCOUNT_ID>:secret:portfolio/database-url" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/portfolio-task",
+          "awslogs-region": "eu-west-3",
+          "awslogs-stream-prefix": "web"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -fsS http://localhost:8000/ || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 15
+      }
+    }
+  ]
+}
