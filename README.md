@@ -139,3 +139,4 @@ Tout le contenu affiché (profil, compétences, expériences, projets,
 certifications) est géré depuis l'admin Django (`/admin/`) — aucune
 modification de template n'est nécessaire pour ajouter un projet ou une
 certification.
+# portfolio
