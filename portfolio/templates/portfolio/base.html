@@ -19,7 +19,6 @@
         <span class="brand__text">{{ profile.full_name|default:"Portfolio" }}</span>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
-        <a href="#about">Profil</a>
         <a href="#skills">Compétences</a>
         <a href="#experience">Expérience</a>
         <a href="#projects">Projets</a>
@@ -31,7 +30,6 @@
       </button>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
-      <a href="#about">Profil</a>
       <a href="#skills">Compétences</a>
       <a href="#experience">Expérience</a>
       <a href="#projects">Projets</a>
@@ -48,7 +46,6 @@
     <div class="wrap site-footer__grid">
       <div>
         <p class="site-footer__title">Discutons de votre prochaine infrastructure.</p>
-        <p class="site-footer__text">Disponible pour des missions freelance ou un poste DevOps / Cloud en présentiel ou à distance.</p>
       </div>
       <div class="site-footer__contacts">
         {% if profile.email %}<a href="mailto:{{ profile.email }}">{{ profile.email }}</a>{% endif %}

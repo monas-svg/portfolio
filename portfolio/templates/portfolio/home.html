@@ -7,7 +7,7 @@
   <div class="wrap hero__grid">
     <div class="hero__intro">
       <img class="hero__avatar" src="{% static 'portfolio/img/profile.jpg' %}" alt="Photo de {{ profile.full_name }}" width="112" height="112">
-      <p class="hero__eyebrow">Douala, Cameroun · disponible pour missions</p>
+      <p class="hero__eyebrow">Douala, Cameroun</p>
       <h1 class="hero__name">{{ profile.full_name }}</h1>
       <p class="hero__headline">{{ profile.headline }}</p>
       <p class="hero__summary">{{ profile.summary }}</p>
@@ -31,45 +31,6 @@
       </dl>
     </div>
 
-    <div class="hero__console panel-corners" aria-hidden="true">
-      <div class="console__bar">
-        <span></span><span></span><span></span>
-        <span class="console__bar-title">deploy.sh — production</span>
-      </div>
-      <pre class="console__body"><code><span class="c-muted">$</span> terraform apply -auto-approve
-<span class="c-ok">✓</span> module.vpc.aws_vpc.main created
-<span class="c-ok">✓</span> module.eks.aws_eks_cluster.this created
-<span class="c-ok">✓</span> module.rds.aws_db_instance.primary created
-
-<span class="c-muted">$</span> helm upgrade --install app ./chart -n prod
-<span class="c-ok">✓</span> release "app" deployed, revision 12
-
-<span class="c-muted">$</span> kubectl get pods -n prod
-NAME                READY   STATUS    RESTARTS
-app-7f9c8d-4kxpz    1/1     Running   0
-app-7f9c8d-9wq2m    1/1     Running   0
-worker-5b7f6-p3jd1  1/1     Running   0
-
-<span class="c-muted">$</span> gh workflow run ci-cd.yml
-<span class="c-ok">✓</span> lint · test · trivy scan · deploy — <span class="c-ok">passed</span></code></pre>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="about">
-  <div class="wrap section__grid">
-    <div class="section__heading">
-      <h2>Profil</h2>
-      <p class="section__lede">4+ ans à faire tenir des systèmes debout, du code à l'infrastructure.</p>
-    </div>
-    <div class="section__body">
-      <p>{{ profile.summary }}</p>
-      <ul class="about-facts">
-        <li><span>Localisation</span>{{ profile.location }}</li>
-        <li><span>Langues</span>Français (natif) · Anglais (A2)</li>
-        <li><span>Disponibilité</span>Missions freelance & postes à responsabilité</li>
-      </ul>
-    </div>
   </div>
 </section>
 
@@ -88,9 +49,6 @@ worker-5b7f6-p3jd1  1/1     Running   0
           <li class="skill-item">
             <div class="skill-item__row">
               <span>{{ skill.name }}</span>
-            </div>
-            <div class="skill-bar" role="img" aria-label="Niveau de maîtrise : {{ skill.proficiency }} sur 5">
-              <span style="width: {% widthratio skill.proficiency 5 100 %}%"></span>
             </div>
           </li>
           {% endfor %}
@@ -175,7 +133,7 @@ worker-5b7f6-p3jd1  1/1     Running   0
         <div class="cert-item__body">
           <p class="cert-item__name">{{ cert.name }}</p>
           <p class="cert-item__meta">
-            {{ cert.issuer }}{% if cert.date_obtained %} · {{ cert.date_obtained|date:"F Y" }}{% endif %}{% if cert.credential_id %} · N° {{ cert.credential_id }}{% endif %}
+            {{ cert.issuer }}{% if cert.credential_id %} · N° {{ cert.credential_id }}{% endif %}
           </p>
         </div>
       </li>

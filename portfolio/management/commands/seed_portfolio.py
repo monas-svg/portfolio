@@ -34,26 +34,26 @@ class Command(BaseCommand):
                 full_name="Mohamed Nasser Mounchikpou Njiemessa",
                 headline="Ingénieur DevOps & Cloud Engineer — AWS & Azure Certified | IA Générative Appliquée",
                 location="Douala, Cameroun",
-                email="mohamednassernjiemessa@gmail.com",
+                email="devops@mohamednasser.site",
                 phone="+237 690 87 29 82",
                 github_url="https://github.com/monassvg",
                 linkedin_url="https://linkedin.com/in/mohamed-nasser-mounchikpou",
                 years_experience=4,
                 summary=(
-                    "DevOps et Multi-Cloud avec plus de 4 ans d'expérience dans la coordination de "
-                    "projets IT et le développement backend. En cours de certification AWS Solutions "
-                    "Architect Associate (SAA-C03), et récemment certifié Microsoft Azure Developer "
-                    "Associate (AZ-204), Microsoft Azure Fundamentals (AZ-900) et AWS Cloud Practitioner "
-                    "(CLF-C02), je combine une forte expertise en développement Python/Django avec "
-                    "l'administration d'infrastructures cloud hybrides et scalables. Spécialiste de la "
-                    "conteneurisation (Docker), de l'orchestration Kubernetes (Helm) et de "
-                    "l'infrastructure as code (Terraform), des environnements Linux et de "
-                    "l'automatisation de pipelines CI/CD (GitHub Actions). Fort de mes certifications "
-                    "Google AI Professional, Google Prompting Essentials, ainsi que Claude Code 101 et "
-                    "Claude Platform 101 (Anthropic), j'intègre activement l'IA générative — y compris "
-                    "les outils IA agentiques comme Claude — pour accélérer le développement, optimiser "
-                    "l'analyse de données et fiabiliser les workflows opérationnels."
-                ),
+    "Ingénieur DevOps et Multi-Cloud avec plus de 4 ans d'expérience dans la coordination de "
+    "projets IT et le développement backend. En cours de certification AWS Solutions "
+    "Architect Associate (SAA-C03), et récemment certifié Microsoft Azure Developer "
+    "Associate (AZ-204), Microsoft Azure Fundamentals (AZ-900) et AWS Cloud Practitioner "
+    "(CLF-C02), je combine une forte expertise en développement Python/Django avec "
+    "l'administration d'infrastructures cloud hybrides et scalables. Spécialiste de la "
+    "conteneurisation (Docker), de l'orchestration Kubernetes (Helm) et de "
+    "l'infrastructure as code (Terraform), des environnements Linux et de "
+    "l'automatisation de pipelines CI/CD (GitHub Actions). Fort de mes certifications "
+    "Google AI Professional, Google Prompting Essentials, ainsi que Claude Code 101 et "
+    "Claude Platform 101 (Anthropic), j'intègre activement l'IA générative — y compris "
+    "les outils IA agentiques comme Claude — pour accélérer le développement, optimiser "
+    "l'analyse de données et fiabiliser les workflows opérationnels."
+),
             ),
         )
 
