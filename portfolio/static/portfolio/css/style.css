@@ -512,3 +512,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .project__figure { margin: 1.1rem 0 0; }
 .project__figure img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid rgba(127, 127, 127, .35); }
 .project__figure figcaption { margin-top: .45rem; font-size: .8rem; opacity: .7; }
+
+/* Frise : marqueurs avec pictogrammes */
+.timeline { padding-left: 52px; }
+.timeline::before { left: 20px; }
+.timeline__marker {
+  left: -48px;
+  top: -2px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--amber);
+  border: 1.5px solid var(--amber);
+}
+.timeline__marker svg { width: 16px; height: 16px; }
