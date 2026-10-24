@@ -1,4 +1,4 @@
-# Portfolio DevOps & Multi-Cloud — Mohamed Nasser Mounchikpou Njiemessa
+# Portfolio DevOps & Multi-Cloud, Mohamed Nasser Mounchikpou Njiemessa
 
 Site portfolio one-page construit avec Django, entièrement pilotable depuis
 l'admin (compétences, expériences, projets, certifications), conteneurisé
@@ -10,7 +10,7 @@ avec Docker et pensé pour un déploiement AWS (ECS Fargate + RDS + ECR).
 - **Base de données** : PostgreSQL (SQLite en fallback local si aucune `DATABASE_URL` n'est fournie)
 - **Conteneurisation** : Dockerfile multi-stage, utilisateur non-root, healthcheck
 - **Reverse proxy** : Nginx (dev local via docker-compose)
-- **CI/CD** : GitHub Actions — lint, tests, scan de vulnérabilités Trivy, build/push ECR, déploiement ECS
+- **CI/CD** : GitHub Actions, lint, tests, scan de vulnérabilités Trivy, build/push ECR, déploiement ECS
 - **Infrastructure cible** : AWS (ECS Fargate, ECR, RDS PostgreSQL, Secrets Manager)
 
 ## 1. Développement local (sans Docker)
@@ -31,7 +31,7 @@ python manage.py runserver
 
 Le site est disponible sur `http://127.0.0.1:8000/`, l'admin sur `/admin/`.
 Tout le contenu (compétences, expériences, projets, certifications) est
-ensuite modifiable depuis l'admin — aucune donnée n'est codée en dur dans
+ensuite modifiable depuis l'admin, aucune donnée n'est codée en dur dans
 les templates.
 
 ## 2. Développement avec Docker (recommandé)
@@ -76,13 +76,13 @@ avant tout build d'image.
    dans un sous-réseau privé, groupe de sécurité limitant l'accès au SG
    des tâches ECS.
 2. **Secrets Manager** : stocker `DJANGO_SECRET_KEY` et l'URL de connexion
-   complète (`DATABASE_URL`) — référencés dans
+   complète (`DATABASE_URL`), référencés dans
    `deploy/ecs-task-definition.json` via `secrets`.
 3. **ECR** : créer le repository `portfolio-app` (`aws ecr create-repository
    --repository-name portfolio-app`).
 4. **IAM (OIDC)** : configurer un rôle IAM assumable par GitHub Actions via
    OpenID Connect (pas de clés d'accès long-lived stockées dans les secrets
-   du repo) — stocker son ARN dans le secret GitHub `AWS_DEPLOY_ROLE_ARN`.
+   du repo), stocker son ARN dans le secret GitHub `AWS_DEPLOY_ROLE_ARN`.
 5. **ECS** : créer un cluster (`portfolio-cluster`), un service Fargate
    (`portfolio-service`) derrière un Application Load Balancer, à partir
    de `deploy/ecs-task-definition.json`.
@@ -136,7 +136,7 @@ nginx/                    # config du reverse proxy
 ## 7. Mettre à jour le contenu
 
 Tout le contenu affiché (profil, compétences, expériences, projets,
-certifications) est géré depuis l'admin Django (`/admin/`) — aucune
+certifications) est géré depuis l'admin Django (`/admin/`), aucune
 modification de template n'est nécessaire pour ajouter un projet ou une
 certification.
 # portfolio

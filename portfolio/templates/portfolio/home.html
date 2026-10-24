@@ -72,7 +72,7 @@
         <div class="timeline__content">
           <div class="timeline__meta">
             <span class="timeline__dates">
-              {{ exp.start_date|date:"M Y" }} — {% if exp.is_current %}présent{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+              {{ exp.start_date|date:"M Y" }} à {% if exp.is_current %}présent{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
             </span>
             {% if exp.location %}<span class="timeline__location">{{ exp.location }}</span>{% endif %}
           </div>
@@ -94,7 +94,7 @@
   <div class="wrap">
     <div class="section__heading">
       <h2>Projets</h2>
-      <p class="section__lede">Infrastructure conçue, conteneurisée et livrée — pas des maquettes.</p>
+      <p class="section__lede">Des infrastructures que j'ai conçues, conteneurisées et mises en ligne.</p>
     </div>
     <div class="projects-list">
       {% for project in projects %}
@@ -104,12 +104,40 @@
           {% if project.is_featured %}<span class="project__badge">Projet phare</span>{% endif %}
         </div>
         <p class="project__summary">{{ project.summary }}</p>
+        {% if project.context %}
+        <div class="project__block">
+          <h4>Contexte</h4>
+          <p>{{ project.context|linebreaksbr }}</p>
+        </div>
+        {% endif %}
+        {% if project.problem_solved %}
+        <div class="project__block">
+          <h4>Problème résolu</h4>
+          <p>{{ project.problem_solved|linebreaksbr }}</p>
+        </div>
+        {% endif %}
         {% if project.description %}<p class="project__description">{{ project.description }}</p>{% endif %}
+        {% if project.infra_image %}
+        <figure class="project__figure">
+          <img src="{% static project.infra_image %}" alt="Schéma d'infrastructure du projet {{ project.title }}" loading="lazy">
+          <figcaption>Architecture et infrastructure : {{ project.title }}</figcaption>
+        </figure>
+        {% endif %}
+        {% if project.infra_components %}
+        <details class="project__infra">
+          <summary>Détail des couches d'infrastructure</summary>
+          <ul class="infra-layers">
+            {% for layer in project.infra_components %}
+            <li><strong>{{ layer.couche }}</strong><span>{{ layer.outils|join:" · " }}</span></li>
+            {% endfor %}
+          </ul>
+        </details>
+        {% endif %}
         <ul class="project__stack">
           {% for tech in project.stack_list %}<li>{{ tech }}</li>{% endfor %}
         </ul>
         <div class="project__links">
-          {% if project.repo_url %}<a href="{{ project.repo_url }}" target="_blank" rel="noopener">Code source</a>{% endif %}
+          {% if project.repo_private %}<span>Code source : lien privé</span>{% elif project.repo_url %}<a href="{{ project.repo_url }}" target="_blank" rel="noopener">Code source</a>{% endif %}
           {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank" rel="noopener">Démo</a>{% endif %}
         </div>
       </article>
@@ -141,5 +169,7 @@
     </ul>
   </div>
 </section>
+
+
 
 {% endblock %}

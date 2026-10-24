@@ -491,3 +491,24 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .site-footer__grid { grid-template-columns: 1fr; }
   .site-footer__bottom { flex-direction: column; gap: 6px; }
 }
+
+
+/* --- Logo, contexte, cartographie d'infrastructure --- */
+.brand { display: inline-flex; align-items: center; gap: .6rem; }
+.brand__logo { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+.project__block { margin: .9rem 0 0; }
+.project__block h4 { margin: 0 0 .25rem; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; opacity: .75; }
+.project__block p { margin: 0; }
+.project__infra { margin: 1rem 0 0; border: 1px solid rgba(127, 127, 127, .35); border-radius: 10px; padding: .6rem .9rem; }
+.project__infra summary { cursor: pointer; font-weight: 600; }
+.infra-diagram { margin-top: .8rem; background: #f8fafc; color: #0f172a; border-radius: 8px; padding: 1rem; overflow-x: auto; }
+.infra-diagram pre { margin: 0; background: transparent; color: inherit; white-space: pre; }
+.infra-layers { list-style: none; margin: .8rem 0 0; padding: 0; display: grid; gap: .4rem; }
+.infra-layers li { display: flex; flex-wrap: wrap; gap: .3rem .8rem; }
+.infra-layers strong { min-width: 9rem; }
+
+
+/* --- Schémas d'infrastructure par projet --- */
+.project__figure { margin: 1.1rem 0 0; }
+.project__figure img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid rgba(127, 127, 127, .35); }
+.project__figure figcaption { margin-top: .45rem; font-size: .8rem; opacity: .7; }

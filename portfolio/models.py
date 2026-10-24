@@ -72,7 +72,7 @@ class Experience(models.Model):
         verbose_name_plural = "Expériences"
 
     def __str__(self):
-        return f"{self.role} — {self.organization}"
+        return f"{self.role}, {self.organization}"
 
     @property
     def is_current(self):
@@ -98,10 +98,32 @@ class Project(models.Model):
     slug = models.SlugField(max_length=170, unique=True, blank=True)
     summary = models.CharField(max_length=280, help_text="Résumé court affiché sur la carte projet.")
     description = models.TextField(blank=True, help_text="Description détaillée (optionnelle).")
+    context = models.TextField("Contexte", blank=True, help_text="Contexte du projet : besoin, public, contraintes.")
+    problem_solved = models.TextField("Problème résolu", blank=True, help_text="Problème concret que le projet résout.")
+    infra_diagram = models.TextField(
+        "Cartographie de l'infrastructure (Mermaid)",
+        blank=True,
+        help_text="Code Mermaid (flowchart) décrivant l'architecture du projet.",
+    )
+    infra_image = models.CharField(
+        "Image d'infrastructure (chemin static)",
+        max_length=200,
+        blank=True,
+        help_text="Ex. portfolio/img/infra/swingbot.svg",
+    )
+    infra_components = models.JSONField(
+        "Composants d'infrastructure",
+        default=list,
+        blank=True,
+        help_text='Liste JSON, ex. [{"couche": "Réseau", "outils": ["Nginx", "Certbot"]}]',
+    )
     stack = models.CharField(
         max_length=300, help_text="Technologies séparées par ' · ' (ex. Kubernetes · Helm · Terraform)."
     )
     repo_url = models.URLField(blank=True)
+    repo_private = models.BooleanField(
+        default=False, help_text="Affiche « lien privé » à la place du lien du dépôt."
+    )
     live_url = models.URLField(blank=True)
     is_featured = models.BooleanField(default=False)
     order = models.PositiveSmallIntegerField(default=0)
